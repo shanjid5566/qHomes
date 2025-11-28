@@ -1,0 +1,52 @@
+'use client';
+
+import Image from 'next/image';
+import { memo } from 'react';
+
+/**
+ * AboutHero Component - Pixel-perfect design
+ * Hero section for the About page with background image and main headline
+ */
+const AboutHero = memo(({ title, subtitle }) => {
+  return (
+    <section
+      className='relative w-full overflow-hidden rounded-xl'
+      aria-labelledby='about-hero-title'
+    >
+      {/* Background Image with Overlay */}
+      <div className='relative min-h-50 sm:min-h-60 lg:min-h-[480px] flex items-center justify-center w-full'>
+        <Image
+          src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80'
+          alt="Panoramic view of modern architecture in Abidjan, Côte d'Ivoire at dusk"
+          fill
+          priority
+          quality={85}
+          sizes='(max-width: 1536px) 100vw, 1536px'
+          className='object-cover'
+        />
+
+        {/* Dark Navy Overlay - #0A2240 with opacity */}
+        <div className='absolute inset-0 bg-[#0A2240]/70' aria-hidden='true' />
+
+        {/* Content */}
+        <div className='relative z-10 flex h-full flex-col items-center justify-center px-4 text-center sm:px-6'>
+          <div className='max-w-4xl space-y-4'>
+            <h1
+              id='about-hero-title'
+              className='text-white  font-black leading-tight tracking-[-0.033em] text-2xl sm:text-3xl lg:text-5xl'
+            >
+              {title}
+            </h1>
+            {/* <p className='text-sm font-normal leading-relaxed text-gray-200 sm:text-base md:text-lg'>
+              {subtitle}
+            </p> */}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+});
+
+AboutHero.displayName = 'AboutHero';
+
+export default AboutHero;
